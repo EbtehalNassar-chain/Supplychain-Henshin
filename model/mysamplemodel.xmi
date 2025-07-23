@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<supplychain:ProductOrder xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:supplychain="http://www.example.org/supplychain"
+    type="standard"
+    orderId="PO-001"
+    quantity="50"
+    orderDate="2025-04-23T00:00:00.000Z">
+  <productList type="electronics" productName="Smart Sensor X"/>
+</supplychain:ProductOrder>

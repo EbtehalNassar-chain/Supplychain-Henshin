@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin"
+    xsi:schemaLocation="http://www.eclipse.org/emf/2011/Henshin platform:/plugin/org.eclipse.emf.henshin.model/model/henshin.ecore"
+    xmi:id="_oCibUFwgEfC0T8ieCkN_rw" name="SupplyChainRules">
+  <imports href="model/supplychain.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_oCibUVwgEfC0T8ieCkN_rw" name="OfferAcceptanceToOrderCreation">
+    <lhs xmi:id="_oCjCYFwgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjCYVwgEfC0T8ieCkN_rw" name="offer">
+        <type href="model/supplychain.ecore#//Offer"/>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_oCjCYlwgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjCY1wgEfC0T8ieCkN_rw" name="offer" incoming="_oCjCZVwgEfC0T8ieCkN_rw">
+        <type href="model/supplychain.ecore#//Offer"/>
+      </nodes>
+      <nodes xmi:id="_oCjCZFwgEfC0T8ieCkN_rw" name="order" outgoing="_oCjCZVwgEfC0T8ieCkN_rw">
+        <type href="model/supplychain.ecore#//ProductOrder"/>
+      </nodes>
+      <edges xmi:id="_oCjCZVwgEfC0T8ieCkN_rw" source="_oCjCZFwgEfC0T8ieCkN_rw" target="_oCjCY1wgEfC0T8ieCkN_rw">
+        <type href="model/supplychain.ecore#//ProductOrder/createdFrom"/>
+      </edges>
+    </rhs>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_oCjCZlwgEfC0T8ieCkN_rw" name="LinkOrderToProductList">
+    <lhs xmi:id="_oCjCZ1wgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjCaFwgEfC0T8ieCkN_rw" name="order"/>
+      <nodes xmi:id="_oCjCaVwgEfC0T8ieCkN_rw" name="list"/>
+    </lhs>
+    <rhs xmi:id="_oCjCalwgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjCa1wgEfC0T8ieCkN_rw" name="order" incoming="_Jd1R4GG9EfC_TOlk2-0_uQ">
+        <type href="model/supplychain.ecore#//ProductOrder"/>
+      </nodes>
+      <nodes xmi:id="_oCjCbFwgEfC0T8ieCkN_rw" name="list" outgoing="_Jd1R4GG9EfC_TOlk2-0_uQ">
+        <type href="model/supplychain.ecore#//ProductList"/>
+      </nodes>
+      <edges xmi:id="_Jd1R4GG9EfC_TOlk2-0_uQ" source="_oCjCbFwgEfC0T8ieCkN_rw" target="_oCjCa1wgEfC0T8ieCkN_rw">
+        <type href="model/supplychain.ecore#//ProductOrder/orderProductList"/>
+      </edges>
+    </rhs>
+    <multiRules xmi:id="_oCjCblwgEfC0T8ieCkN_rw" name="PreventDuplicateOrderToProductList">
+      <lhs xmi:id="_oCjCb1wgEfC0T8ieCkN_rw">
+        <nodes xmi:id="_oCjCcFwgEfC0T8ieCkN_rw" name="order" outgoing="_idH8sGNMEfCTfua37QIz2g"/>
+        <nodes xmi:id="_oCjCcVwgEfC0T8ieCkN_rw" name="list" incoming="_idH8sGNMEfCTfua37QIz2g"/>
+        <edges xmi:id="_idH8sGNMEfCTfua37QIz2g" source="_oCjCcFwgEfC0T8ieCkN_rw" target="_oCjCcVwgEfC0T8ieCkN_rw">
+          <type href="model/supplychain.ecore#//ProductOrder/orderProductList"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_qs8yIFwrEfC0T8ieCkN_rw" name="Rhs"/>
+    </multiRules>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_oCjCc1wgEfC0T8ieCkN_rw" name="OrderToShipmentPlanning">
+    <lhs xmi:id="_oCjCdFwgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjCdVwgEfC0T8ieCkN_rw" name="order"/>
+    </lhs>
+    <rhs xmi:id="_oCjCdlwgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjCd1wgEfC0T8ieCkN_rw" name="order" incoming="_oCjCeVwgEfC0T8ieCkN_rw"/>
+      <nodes xmi:id="_oCjCeFwgEfC0T8ieCkN_rw" name="plan" outgoing="_oCjCeVwgEfC0T8ieCkN_rw"/>
+      <edges xmi:id="_oCjCeVwgEfC0T8ieCkN_rw" source="_oCjCeFwgEfC0T8ieCkN_rw" target="_oCjCd1wgEfC0T8ieCkN_rw">
+        <type href="model/supplychain.ecore#//ShipmentPlanning/requiresPlanning"/>
+      </edges>
+    </rhs>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_oCjCelwgEfC0T8ieCkN_rw" name="ShipmentCreatesInvoice">
+    <lhs xmi:id="_oCjCe1wgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjCfFwgEfC0T8ieCkN_rw" name="shipment"/>
+    </lhs>
+    <rhs xmi:id="_oCjCfVwgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjCflwgEfC0T8ieCkN_rw" name="shipment" outgoing="_oCjCgFwgEfC0T8ieCkN_rw"/>
+      <nodes xmi:id="_oCjCf1wgEfC0T8ieCkN_rw" name="invoice" incoming="_oCjCgFwgEfC0T8ieCkN_rw"/>
+      <edges xmi:id="_oCjCgFwgEfC0T8ieCkN_rw" source="_oCjCflwgEfC0T8ieCkN_rw" target="_oCjCf1wgEfC0T8ieCkN_rw">
+        <type href="model/supplychain.ecore#//ShipmentOrder/invoice"/>
+      </edges>
+    </rhs>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_oCjCgVwgEfC0T8ieCkN_rw" name="PaymentToInvoiceLink">
+    <lhs xmi:id="_oCjCglwgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjCg1wgEfC0T8ieCkN_rw" name="payment"/>
+      <nodes xmi:id="_oCjChFwgEfC0T8ieCkN_rw" name="invoice"/>
+    </lhs>
+    <rhs xmi:id="_oCjChVwgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjChlwgEfC0T8ieCkN_rw" name="payment" outgoing="_q4VA0GG_EfC_TOlk2-0_uQ">
+        <type href="model/supplychain.ecore#//PaymentSettlementsConditions"/>
+      </nodes>
+      <nodes xmi:id="_oCjCh1wgEfC0T8ieCkN_rw" name="invoice" incoming="_q4VA0GG_EfC_TOlk2-0_uQ"/>
+      <edges xmi:id="_q4VA0GG_EfC_TOlk2-0_uQ" source="_oCjChlwgEfC0T8ieCkN_rw" target="_oCjCh1wgEfC0T8ieCkN_rw">
+        <type href="model/supplychain.ecore#//PaymentSettlementsConditions/triggersPayment"/>
+      </edges>
+    </rhs>
+    <multiRules xmi:id="_oCjCiVwgEfC0T8ieCkN_rw" name="PreventDuplicatePaymentToInvoice">
+      <lhs xmi:id="_oCjCilwgEfC0T8ieCkN_rw">
+        <nodes xmi:id="_oCjCi1wgEfC0T8ieCkN_rw" name="payment" outgoing="_INx34GHAEfC_TOlk2-0_uQ"/>
+        <nodes xmi:id="_oCjCjFwgEfC0T8ieCkN_rw" name="invoice" incoming="_INx34GHAEfC_TOlk2-0_uQ"/>
+        <edges xmi:id="_INx34GHAEfC_TOlk2-0_uQ" source="_oCjCi1wgEfC0T8ieCkN_rw" target="_oCjCjFwgEfC0T8ieCkN_rw">
+          <type href="model/supplychain.ecore#//PaymentSettlementsConditions/triggersPayment"/>
+        </edges>
+      </lhs>
+      <rhs xmi:id="_27sm8FwrEfC0T8ieCkN_rw" name="Rhs"/>
+    </multiRules>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_oCjCjlwgEfC0T8ieCkN_rw" name="ConfirmDeliveryAfterPayment">
+    <lhs xmi:id="_oCjCj1wgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjCkFwgEfC0T8ieCkN_rw" name="confirmation">
+        <type href="model/supplychain.ecore#//DeliveryConfirmation"/>
+      </nodes>
+      <nodes xmi:id="_oCjCkVwgEfC0T8ieCkN_rw" name="shipment">
+        <type href="model/supplychain.ecore#//ShipmentOrder"/>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_oCjCklwgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjCk1wgEfC0T8ieCkN_rw" name="confirmation" outgoing="_oCjClVwgEfC0T8ieCkN_rw">
+        <type href="model/supplychain.ecore#//DeliveryConfirmation"/>
+      </nodes>
+      <nodes xmi:id="_oCjClFwgEfC0T8ieCkN_rw" name="shipment" incoming="_oCjClVwgEfC0T8ieCkN_rw">
+        <type href="model/supplychain.ecore#//ShipmentOrder"/>
+      </nodes>
+      <edges xmi:id="_oCjClVwgEfC0T8ieCkN_rw" source="_oCjCk1wgEfC0T8ieCkN_rw" target="_oCjClFwgEfC0T8ieCkN_rw">
+        <type href="model/supplychain.ecore#//DeliveryConfirmation/requiresShipment"/>
+      </edges>
+    </rhs>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_oCjCllwgEfC0T8ieCkN_rw" name="ValidateSustainabilityBeforeShipment">
+    <lhs xmi:id="_oCjCl1wgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjCmFwgEfC0T8ieCkN_rw" name="shipment">
+        <type href="model/supplychain.ecore#//ShipmentOrder"/>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_oCjCmVwgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjCmlwgEfC0T8ieCkN_rw" name="shipment" outgoing="_JC5dsGNPEfCTfua37QIz2g _NVi-oGNPEfCTfua37QIz2g _QxQ3kGNPEfCTfua37QIz2g">
+        <type href="model/supplychain.ecore#//ShipmentOrder"/>
+      </nodes>
+      <nodes xmi:id="_oCjCm1wgEfC0T8ieCkN_rw" name="co2" incoming="_JC5dsGNPEfCTfua37QIz2g">
+        <type href="model/supplychain.ecore#//CO2"/>
+      </nodes>
+      <nodes xmi:id="_oCjCnFwgEfC0T8ieCkN_rw" name="cert" incoming="_NVi-oGNPEfCTfua37QIz2g">
+        <type href="model/supplychain.ecore#//SupplierCertificates"/>
+      </nodes>
+      <nodes xmi:id="_oCjCnVwgEfC0T8ieCkN_rw" name="origin" incoming="_QxQ3kGNPEfCTfua37QIz2g">
+        <type href="model/supplychain.ecore#//ProductOrigin"/>
+      </nodes>
+      <edges xmi:id="_JC5dsGNPEfCTfua37QIz2g" source="_oCjCmlwgEfC0T8ieCkN_rw" target="_oCjCm1wgEfC0T8ieCkN_rw">
+        <type href="model/supplychain.ecore#//ShipmentOrder/emissions"/>
+      </edges>
+      <edges xmi:id="_NVi-oGNPEfCTfua37QIz2g" source="_oCjCmlwgEfC0T8ieCkN_rw" target="_oCjCnFwgEfC0T8ieCkN_rw">
+        <type href="model/supplychain.ecore#//ShipmentOrder/certificate"/>
+      </edges>
+      <edges xmi:id="_QxQ3kGNPEfCTfua37QIz2g" source="_oCjCmlwgEfC0T8ieCkN_rw" target="_oCjCnVwgEfC0T8ieCkN_rw">
+        <type href="model/supplychain.ecore#//ShipmentOrder/origin"/>
+      </edges>
+    </rhs>
+  </units>
+  <units xsi:type="henshin:Rule" xmi:id="_oCjCnlwgEfC0T8ieCkN_rw" name="LogIoTDataForShipment">
+    <lhs xmi:id="_oCjCn1wgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjCoFwgEfC0T8ieCkN_rw" name="shipment">
+        <type href="model/supplychain.ecore#//ShipmentOrder"/>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_oCjCoVwgEfC0T8ieCkN_rw">
+      <nodes xmi:id="_oCjColwgEfC0T8ieCkN_rw" name="shipment" outgoing="_wYIXoGNPEfCTfua37QIz2g">
+        <type href="model/supplychain.ecore#//ShipmentOrder"/>
+      </nodes>
+      <nodes xmi:id="_oCjCo1wgEfC0T8ieCkN_rw" name="stream" incoming="_wYIXoGNPEfCTfua37QIz2g">
+        <type href="model/supplychain.ecore#//IoTDataStreams"/>
+      </nodes>
+      <edges xmi:id="_wYIXoGNPEfCTfua37QIz2g" source="_oCjColwgEfC0T8ieCkN_rw" target="_oCjCo1wgEfC0T8ieCkN_rw">
+        <type href="model/supplychain.ecore#//ShipmentOrder/iotData"/>
+      </edges>
+    </rhs>
+  </units>
+</henshin:Module>

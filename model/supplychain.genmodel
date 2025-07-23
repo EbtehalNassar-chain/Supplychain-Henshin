@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/supplychain/src" modelPluginID="supplychain" modelName="Supplychain"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="23.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>supplychain.ecore</foreignModel>
+  <genPackages prefix="Supplychain" disposableProviderFactory="true" ecorePackage="supplychain.ecore#/">
+    <genClasses ecoreClass="supplychain.ecore#//Offer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Offer/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Offer/price"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Offer/quantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Offer/offerId"/>
+      <genOperations ecoreOperation="supplychain.ecore#//Offer/createOffer"/>
+      <genOperations ecoreOperation="supplychain.ecore#//Offer/acceptOffer"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//PaymentSettlementsConditions">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//PaymentSettlementsConditions/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//PaymentSettlementsConditions/conditions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//PaymentSettlementsConditions/paymentConditions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference supplychain.ecore#//PaymentSettlementsConditions/triggersPayment"/>
+      <genOperations ecoreOperation="supplychain.ecore#//PaymentSettlementsConditions/storeConditions"/>
+      <genOperations ecoreOperation="supplychain.ecore#//PaymentSettlementsConditions/confirmConditions"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//ProductList">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//ProductList/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//ProductList/productName"/>
+      <genOperations ecoreOperation="supplychain.ecore#//ProductList/addProduct"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//ProductOrder">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//ProductOrder/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//ProductOrder/orderId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//ProductOrder/quantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//ProductOrder/orderDate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference supplychain.ecore#//ProductOrder/orderProductList"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference supplychain.ecore#//ProductOrder/createdFrom"/>
+      <genOperations ecoreOperation="supplychain.ecore#//ProductOrder/storeOrder"/>
+      <genOperations ecoreOperation="supplychain.ecore#//ProductOrder/acceptOrder"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//ShipmentOrder">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//ShipmentOrder/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//ShipmentOrder/time_interval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//ShipmentOrder/shipmentId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//ShipmentOrder/status"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference supplychain.ecore#//ShipmentOrder/productOrder"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference supplychain.ecore#//ShipmentOrder/invoice"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference supplychain.ecore#//ShipmentOrder/emissions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference supplychain.ecore#//ShipmentOrder/certificate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference supplychain.ecore#//ShipmentOrder/origin"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference supplychain.ecore#//ShipmentOrder/iotData"/>
+      <genOperations ecoreOperation="supplychain.ecore#//ShipmentOrder/updateShipmentData"/>
+      <genOperations ecoreOperation="supplychain.ecore#//ShipmentOrder/verifyShipmentStatus"/>
+      <genOperations ecoreOperation="supplychain.ecore#//ShipmentOrder/verifyOnTimeDelivery"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//ShipmentPlanning">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//ShipmentPlanning/planId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference supplychain.ecore#//ShipmentPlanning/requiresPlanning"/>
+      <genOperations ecoreOperation="supplychain.ecore#//ShipmentPlanning/storeOrder"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//Invoice">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Invoice/productType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Invoice/shipmentOrder"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Invoice/invoiceId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Invoice/totalAmount"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference supplychain.ecore#//Invoice/inProductOrder"/>
+      <genOperations ecoreOperation="supplychain.ecore#//Invoice/createInvoice"/>
+      <genOperations ecoreOperation="supplychain.ecore#//Invoice/verifyBreakDownCost"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//DeliveryConfirmation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//DeliveryConfirmation/confirmationId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//DeliveryConfirmation/deliveryDate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference supplychain.ecore#//DeliveryConfirmation/requiresShipment"/>
+      <genOperations ecoreOperation="supplychain.ecore#//DeliveryConfirmation/transferProductOwnership"/>
+      <genOperations ecoreOperation="supplychain.ecore#//DeliveryConfirmation/confirmProduct"/>
+      <genOperations ecoreOperation="supplychain.ecore#//DeliveryConfirmation/verifyOrderFulfillment"/>
+      <genOperations ecoreOperation="supplychain.ecore#//DeliveryConfirmation/verifyProductAuthenticity"/>
+      <genOperations ecoreOperation="supplychain.ecore#//DeliveryConfirmation/verifyProductQuality"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//CO2">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//CO2/emissionAmount"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//SupplierCertificates">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//SupplierCertificates/certificateId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//SupplierCertificates/issuingDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//SupplierCertificates/expiryDate"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//MaterialReuse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//MaterialReuse/recycledMaterialPercentage"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//RawMaterialsSource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//RawMaterialsSource/sourceLocation"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//ProductHistory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//ProductHistory/timestamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//ProductHistory/event"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//ProductOrigin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//ProductOrigin/originLocation"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//Suppliers">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Suppliers/supplierId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Suppliers/supplierName"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//Payment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Payment/paymentId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Payment/amount"/>
+      <genOperations ecoreOperation="supplychain.ecore#//Payment/pay"/>
+      <genOperations ecoreOperation="supplychain.ecore#//Payment/verifyPaymentStatus"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//IoTDataStreams">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//IoTDataStreams/streamId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//IoTDataStreams/data"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//IoTDataStreams/timestamp"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//NonFungibleToken">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//NonFungibleToken/tokenId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//NonFungibleToken/owner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//NonFungibleToken/metadata"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//IoTSensors">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//IoTSensors/sensorId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//IoTSensors/sensorType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//IoTSensors/location"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//IoTSensors/reading"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//Cryptocurrency">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Cryptocurrency/currencyId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Cryptocurrency/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Cryptocurrency/amount"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//Inventory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Inventory/quantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//Inventory/location"/>
+    </genClasses>
+    <genClasses ecoreClass="supplychain.ecore#//TransportationNotes">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//TransportationNotes/noteId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute supplychain.ecore#//TransportationNotes/content"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

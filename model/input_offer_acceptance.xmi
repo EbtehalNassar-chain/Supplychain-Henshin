@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SupplyChainModel xmlns="http://www.example.org/supplychain" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Offer xsi:type="supplychain:Offer" type="standard" price="100.0" quantity="10.0" offerId="1"/>
+</SupplyChainModel>
